@@ -1,23 +1,23 @@
 ﻿using NLog;
-using SmartDomSMS.Modem;
-using SmartDomSMS.SmartDom;
+using SmartHome_SMS.Modem;
+using SmartHome_SMS.SmartDom;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SmartDomSMS
+namespace SmartHome_SMS
 {
-    internal class Automat
+    internal class MainTask
     {
-        private static readonly Logger Logger = LogManager.GetLogger("Automat");
+        private static readonly Logger Logger = LogManager.GetLogger("Main Task");
 
-        public Automat()
+        public MainTask()
         {
-            Thread automatThread = new Thread(HandleAutomat);
+            Thread automatThread = new Thread(MainTaskHandler);
             automatThread.Start();
         }
 
-        private async void HandleAutomat()
+        private async void MainTaskHandler()
         {
             while (true)
             {

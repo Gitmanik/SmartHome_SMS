@@ -1,42 +1,42 @@
 ﻿using NLog;
 using NLog.Config;
 using NLog.Targets;
-using SmartDomSMS.Modem;
-using SmartDomSMS.SmartDom;
+using SmartHome_SMS.Modem;
+using SmartHome_SMS.SmartDom;
 using System.Text;
 using System.Threading;
 
-namespace SmartDomSMS
+namespace SmartHome_SMS
 {
     internal class Program
     {
-        private static readonly Logger Logger = LogManager.GetLogger("SmartDomSMS");
+        private static readonly Logger Logger = LogManager.GetLogger("SmartHome_SMS");
 
         public static ZTE_MF823_Bridge modem;
-        public static SmartDom_Bridge smartdom;
+        public static SmartHome_Bridge smartdom;
 
-        public static Automat automat;
+        public static MainTask automat;
         public static ConsoleHandler console;
 
         private static void Main()
         {
             ConfigureNLog();
 
-            Logger.Info("SmartDomSMS by Paweł Reich, 2020");
+            Logger.Info("SmartHome_SMS by Gitmanik, 2020");
 
-            Logger.Info("Budowanie mostu pomiędzy Automatem a Modemem..");
+            Logger.Info("Building Bridge over Cellular Modem");
             modem = new ZTE_MF823_Bridge();
 
-            Logger.Info("Budowanie mostu pomiędzy Automatem a SmartDomem..");
-            smartdom = new SmartDom_Bridge();
+            Logger.Info("Building Bridge over SmartHome");
+            smartdom = new SmartHome_Bridge();
 
-            Logger.Info("Uruchamianie Automatu..");
-            automat = new Automat();
+            Logger.Info("Starting main Task");
+            automat = new MainTask();
 
-            Logger.Info("Uruchamianie Konsoli..");
+            Logger.Info("Starting Console Handler");
             console = new ConsoleHandler();
 
-            Logger.Info("Gotowy");
+            Logger.Info("Ready");
 
             new ManualResetEvent(false).WaitOne();
         }

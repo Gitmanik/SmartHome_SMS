@@ -1,10 +1,10 @@
 ﻿using NLog;
-using SmartDomSMS.Modem;
-using SmartDomSMS.SmartDom;
+using SmartHome_SMS.Modem;
+using SmartHome_SMS.SmartDom;
 using System;
 using System.Threading;
 
-namespace SmartDomSMS
+namespace SmartHome_SMS
 {
     public class ConsoleHandler
     {

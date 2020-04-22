@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SmartDomSMS.Modem
+namespace SmartHome_SMS.Modem
 {
     internal class ZTE_MF823_Bridge
     {

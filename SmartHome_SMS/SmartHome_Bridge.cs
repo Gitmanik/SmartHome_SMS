@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SmartDomSMS.SmartDom
+namespace SmartHome_SMS.SmartDom
 {
-    internal class SmartDom_Bridge
+    internal class SmartHome_Bridge
     {
-        private static readonly Logger Logger = LogManager.GetLogger("Most Automat-SmartDom");
+        private static readonly Logger Logger = LogManager.GetLogger("SmartHome Bridge");
 
         private static readonly Uri DEVICES = new Uri("http://127.0.0.1/api/devices.php");
         private static readonly Uri CHANGE = new Uri("http://127.0.0.1/api/change.php");
