@@ -51,7 +51,7 @@ namespace SmartHome_SMS
                                     else
                                     {
                                         Logger.Info($"Przełączanie: {dev}");
-                                        await Program.smartdom.SetTOGGLE(dev);
+                                        await Program.smartdom.Change(dev);
                                         await Program.modem.SendSMS(new SMS()
                                         {
                                             number = sms.number,
@@ -80,7 +80,7 @@ namespace SmartHome_SMS
                                     else
                                     {
                                         Logger.Info($"Włączanie: {dev}");
-                                        await Program.smartdom.SetTOGGLE(dev, new SmartDomDeviceData() { state = true });
+                                        await Program.smartdom.Change(dev, new SmartDomDeviceData() { state = true });
                                         await Program.modem.SendSMS(new SMS()
                                         {
                                             number = sms.number,
@@ -109,7 +109,7 @@ namespace SmartHome_SMS
                                     else
                                     {
                                         Logger.Info($"Wyłączanie: {dev}");
-                                        await Program.smartdom.SetTOGGLE(dev, new SmartDomDeviceData() { state = false });
+                                        await Program.smartdom.Change(dev, new SmartDomDeviceData() { state = false });
                                         await Program.modem.SendSMS(new SMS()
                                         {
                                             number = sms.number,

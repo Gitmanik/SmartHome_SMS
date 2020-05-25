@@ -21,16 +21,15 @@ namespace SmartHome_SMS.SmartDom
             return JsonConvert.DeserializeObject<List<SmartDomDevice>>(await HTTP_CLIENT.GetStringAsync(DEVICES));
         }
 
-        public async Task SetTOGGLE(SmartDomDevice dev, SmartDomDeviceData d = null)
+        public async Task Change(SmartDomDevice dev, SmartDomDeviceData d = null)
         {
-            if (d == null)
-                d = new SmartDomDeviceData() { state = !dev.DevData.state };
-
             Dictionary<string, string> data = new Dictionary<string, string>
             {
                 { "id", dev.device_id },
-                { "data", JsonConvert.SerializeObject(d) }
             };
+            if (d != null)
+                data.Add("data", JsonConvert.SerializeObject(d));
+
             Logger.Info("Przełączanie: " + dev);
             using (var request = new HttpRequestMessage()
             {
@@ -56,10 +55,17 @@ namespace SmartHome_SMS.SmartDom
 
         public string GetStatus()
         {
-            if (type == "TOGGLE")
-                return DevData.state ? "Włączony" : "Wyłączony";
-            else
-                return "UNDEFINED TYPE: " + type;
+            switch (type)
+            {
+                case "TOGGLE":
+                    return DevData.state ? "Włączony" : "Wyłączony";
+
+                case "MOMENTARY":
+                    return "--";
+
+                default:
+                    return "Nie zaimplementowano.";
+            }
         }
     }
 

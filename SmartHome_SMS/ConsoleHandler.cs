@@ -63,7 +63,7 @@ namespace SmartHome_SMS
                                     return;
                                 }
                                 Logger.Info("Przełączanie: " + dev);
-                                await Program.smartdom.SetTOGGLE(dev);
+                                await Program.smartdom.Change(dev);
                             }
                             else
                             {

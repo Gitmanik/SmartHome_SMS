@@ -1,5 +1,8 @@
 # Smart Home SMS
 
+# MOVED TO https://github.com/Gitmanik/SmartHome
+
+
 Smart Home SMS is a simple C# program which talks with ZTE-MF823 USB cellular modem.
 
 ## Installation
